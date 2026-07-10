@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I'm Sorry, Pakhi 🕊️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #fdf8f2;
+      --blush:   #f5dde4;
+      --rose:    #d4788a;
+      --deep:    #8b3a50;
+      --mist:    #e8d5da;
+      --text:    #4a2c35;
+      --muted:   #a07880;
+      --sage:    #c8d8cc;
+    }
+
+    html, body {
+      min-height: 100%;
+      background: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── Ambient background ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 5% 10%,  #f5dde488 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 95% 85%, #e8d5da66 0%, transparent 55%),
+        radial-gradient(ellipse 35% 35% at 50% 50%, #fce8ec33 0%, transparent 65%),
+        var(--cream);
+      pointer-events: none;
+    }
+
+    /* ── Falling petals ── */
+    .petal {
+      position: fixed; pointer-events: none; z-index: 0;
+      opacity: 0; font-size: 1rem;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(-20px) rotate(0deg) scale(.8);  opacity: 0; }
+      8%   { opacity: .45; }
+      92%  { opacity: .3; }
+      100% { transform: translateY(105vh) rotate(300deg) scale(.9); opacity: 0; }
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 3rem 1.4rem 4rem;
+      gap: 0;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      animation: riseIn 1s cubic-bezier(.22,1,.36,1) both;
+    }
+    .hero-icon {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 1.2rem;
+      animation: heartbeat 2.4s ease-in-out infinite;
+    }
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      30%      { transform: scale(1.12); }
+      60%      { transform: scale(1.05); }
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 9vw, 5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--deep);
+      letter-spacing: -.5px;
+      line-height: 1;
+    }
+    .hero-tagline {
+      margin-top: .7rem;
+      font-size: .75rem; font-weight: 300;
+      letter-spacing: 3.5px; text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 100%; max-width: 480px;
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 2.8rem;
+      animation: riseIn 1s .2s cubic-bezier(.22,1,.36,1) both;
+    }
+    .divider::before, .divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--mist), transparent);
+    }
+    .divider span { font-size: .9rem; color: var(--rose); }
+
+    /* ── Letter card ── */
+    .letter {
+      width: 100%; max-width: 520px;
+      background: rgba(255,255,255,.68);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(212,120,138,.2);
+      border-radius: 20px;
+      padding: 2.4rem 2.2rem 2rem;
+      box-shadow:
+        0 2px 4px rgba(180,80,100,.04),
+        0 12px 48px rgba(180,80,100,.09),
+        inset 0 1px 0 rgba(255,255,255,.8);
+      margin-bottom: 2rem;
+      animation: riseIn 1s .3s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    .letter-eyebrow {
+      font-size: .68rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 1.6rem;
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .letter-eyebrow::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(212,120,138,.4), transparent);
+    }
+
+    .letter-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 3vw, 1.25rem);
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text);
+    }
+    .letter-body em {
+      font-style: italic;
+      color: var(--deep);
+    }
+
+    .letter-sign {
+      margin-top: 1.8rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-style: italic;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ── Promise cards row ── */
+    .promises {
+      width: 100%; max-width: 520px;
+      margin-bottom: 2rem;
+      animation: riseIn 1s .45s cubic-bezier(.22,1,.36,1) both;
+    }
+    .promises-label {
+      font-size: .68rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--muted); text-align: center; margin-bottom: 1.2rem;
+    }
+    .promise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+    @media(max-width: 400px) { .promise-grid { grid-template-columns: 1fr; } }
+    .promise-card {
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(212,120,138,.18);
+      border-radius: 14px;
+      padding: 1.1rem 1rem;
+      display: flex; flex-direction: column; gap: .4rem;
+      backdrop-filter: blur(10px);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .promise-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(180,80,100,.1);
+    }
+    .promise-icon { font-size: 1.3rem; }
+    .promise-text {
+      font-size: .84rem; line-height: 1.45; color: var(--text); font-weight: 300;
+    }
+
+    /* ── Soft note ── */
+    .soft-note {
+      width: 100%; max-width: 520px;
+      text-align: center;
+      padding: 1.6rem 1.4rem;
+      background: linear-gradient(135deg, rgba(245,221,228,.5), rgba(200,216,204,.35));
+      border-radius: 16px;
+      border: 1px solid rgba(212,120,138,.15);
+      margin-bottom: 2.5rem;
+      animation: riseIn 1s .6s cubic-bezier(.22,1,.36,1) both;
+    }
+    .soft-note p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 3vw, 1.15rem);
+      font-style: italic;
+      color: var(--deep);
+      line-height: 1.75;
+    }
+
+    /* ── Footer ── */
+    footer {
+      font-size: .72rem; color: var(--muted); letter-spacing: 1.5px;
+      text-transform: uppercase; text-align: center;
+      animation: riseIn 1s .75s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  const symbols = ['🌸','🌷','✿','❀','🕊️'];
+  for (let i = 0; i < 16; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    p.style.cssText = `left:${Math.random()*100}%;font-size:${.55+Math.random()*.7}rem;animation-duration:${10+Math.random()*14}s;animation-delay:${Math.random()*16}s;`;
+    document.body.appendChild(p);
+  }
+</script>
+
+<div class="page">
+
+  <div class="hero">
+    <span class="hero-icon">🕊️</span>
+    <div class="hero-name">Pakhi</div>
+    <div class="hero-tagline">a letter from the heart</div>
+  </div>
+
+  <div class="divider"><span>💌</span></div>
+
+  <div class="letter">
+    <div class="letter-eyebrow">to my Pakhi</div>
+    <div class="letter-body">
+      Pakhi, I'm so sorry for the way I spoke to you. My words came out wrong and I hate that they hurt you —
+      especially when all you were doing was being <em>honest with me about how you felt.</em>
+      <br><br>
+      Your insecurities are never a burden to me. I should have held them gently, not pushed them away.
+      <br><br>
+      Your face, your eyes, <em>every single part of you</em> — I find beautiful.
+      Acne doesn't change what I see when I look at you.
+      I see the bold, straight-talking, incredible girl I am so lucky to have.
+      <br><br>
+      I'm sorry. <em>Truly.</em>
+    </div>
+    <div class="letter-sign">— always yours 🌸</div>
+  </div>
+
+  <div class="promises">
+    <div class="promises-label">what I promise you</div>
+    <div class="promise-grid">
+      <div class="promise-card">
+        <span class="promise-icon">🤍</span>
+        <span class="promise-text">To hold your feelings with care, always.</span>
+      </div>
+      <div class="promise-card">
+        <span class="promise-icon">👁️</span>
+        <span class="promise-text">To remind you how beautiful you are — every day.</span>
+      </div>
+      <div class="promise-card">
+        <span class="promise-icon">🌿</span>
+        <span class="promise-text">To choose my words more gently, even when I'm frustrated.</span>
+      </div>
+      <div class="promise-card">
+        <span class="promise-icon">🫂</span>
+        <span class="promise-text">To be your safe place, not a source of hurt.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="soft-note">
+    <p>"Your eyes tell stories I never want to stop reading.<br>
+    And your boldness? That's one of my favourite things about you."</p>
+  </div>
+
+  <footer>made with love &amp; a very sorry heart 💕</footer>
+
+</div>
+</body>
+</html>
