@@ -3,102 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>happy girlfriend day, blossom 🌸</title>
+<title>for you, Neha 🌸</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --rose:    #e8a0a0;
-    --blush:   #f5d6d6;
-    --petal:   #f9e8e8;
-    --sage:    #b5c9b0;
-    --cream:   #fdf6f0;
+    --ink:     #2d2320;
+    --rose:    #d4837a;
+    --blush:   #f0c4bc;
+    --petal:   #fae8e4;
+    --sage:    #9db89a;
+    --foam:    #e8f0e6;
+    --lavender:#c4b8d8;
+    --sky:     #b8d4e8;
+    --cream:   #fdf7f4;
     --warm:    #7a4f3a;
-    --muted:   #a07868;
-    --soft:    #c9a898;
-    --bg:      #fdf0ec;
-    --green:   #8aaf85;
+    --muted:   #9a8078;
+    --gold:    #c8a96e;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--bg);
-    color: var(--warm);
-    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
+    line-height: 1.7;
   }
 
-  /* ── Falling petals canvas ── */
-  #petal-canvas {
+  /* ── canvas ── */
+  #bloom-canvas {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    inset: 0;
     pointer-events: none;
     z-index: 0;
   }
 
-  /* ── All sections sit above canvas ── */
-  section, header, footer {
-    position: relative;
-    z-index: 1;
-  }
+  /* everything above canvas */
+  header, section, .closing-wrap { position: relative; z-index: 1; }
 
-  /* ════════════════════════════════
+  /* ════════════════════
      HERO
-  ════════════════════════════════ */
+  ════════════════════ */
   header {
-    min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 4rem 2rem 3rem;
-    background: radial-gradient(ellipse at 60% 30%, #fce8e8 0%, var(--bg) 65%);
+    padding: 5rem 2rem 4rem;
+    background: radial-gradient(ellipse at 55% 40%, #fce8e2 0%, var(--cream) 68%);
   }
 
-  .badge {
-    display: inline-block;
-    font-family: 'Lato', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 400;
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--rose);
-    border: 1px solid var(--blush);
-    border-radius: 999px;
-    padding: 0.4rem 1.1rem;
     margin-bottom: 2rem;
     opacity: 0;
-    animation: fadeUp 1s 0.2s ease forwards;
+    animation: riseIn 1s 0.3s ease forwards;
   }
 
-  .hero-flower {
-    font-size: 3.5rem;
+  .hero-bloom {
+    font-size: 4rem;
     line-height: 1;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.4rem;
     opacity: 0;
-    animation: bloomIn 1.2s 0.4s ease forwards;
+    animation: bloomPop 1.3s 0.5s cubic-bezier(.34,1.56,.64,1) forwards;
   }
 
-  @keyframes bloomIn {
-    0%   { opacity: 0; transform: scale(0.4) rotate(-20deg); }
-    60%  { transform: scale(1.12) rotate(4deg); }
-    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  @keyframes bloomPop {
+    0%   { opacity:0; transform: scale(0.2) rotate(-30deg); }
+    70%  { transform: scale(1.15) rotate(5deg); }
+    100% { opacity:1; transform: scale(1) rotate(0deg); }
   }
 
   .hero-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(2.4rem, 9vw, 5.5rem);
-    font-weight: 400;
-    line-height: 1.15;
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(2.6rem, 10vw, 5.8rem);
+    line-height: 1.1;
     color: var(--warm);
     opacity: 0;
-    animation: fadeUp 1.1s 0.6s ease forwards;
+    animation: riseIn 1.1s 0.8s ease forwards;
   }
 
   .hero-title em {
@@ -107,499 +100,634 @@
   }
 
   .hero-sub {
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    max-width: 400px;
+    margin: 1.4rem auto 0;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
     color: var(--muted);
-    margin-top: 1.2rem;
-    letter-spacing: 0.04em;
     opacity: 0;
-    animation: fadeUp 1s 0.9s ease forwards;
+    animation: riseIn 1s 1.1s ease forwards;
+    line-height: 1.85;
+  }
+
+  .scroll-nudge {
+    margin-top: 3.5rem;
+    opacity: 0;
+    animation: riseIn 1s 1.5s ease forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--blush);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .arrow { animation: dip 2s 2s ease-in-out infinite; font-size: 1.1rem; }
+  @keyframes dip {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(6px); }
+  }
+
+  /* ════════════════════
+     LETTER SECTION
+  ════════════════════ */
+  .letter-section {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .letter-paper {
+    background: white;
+    border-radius: 24px;
+    padding: clamp(2rem, 6vw, 3.5rem);
+    box-shadow: 0 8px 48px rgba(180,100,80,0.09), 0 2px 8px rgba(180,100,80,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .letter-paper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--blush), var(--lavender), var(--sage));
+    border-radius: 24px 24px 0 0;
+  }
+
+  .letter-date {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 1.8rem;
+    opacity: 0.7;
+  }
+
+  .letter-greeting {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    color: var(--warm);
+    margin-bottom: 1.5rem;
+  }
+
+  .letter-body {
+    font-size: 1.02rem;
+    line-height: 2;
+    color: #5a4038;
+  }
+
+  .letter-body p + p { margin-top: 1.2rem; }
+
+  .letter-body strong {
+    font-weight: 500;
+    color: var(--warm);
+  }
+
+  .letter-body em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .letter-sign {
+    margin-top: 2rem;
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--rose);
+  }
+
+  /* ════════════════════
+     MIRROR SECTION
+  ════════════════════ */
+  .mirror-section {
+    background: linear-gradient(160deg, #fae8e4 0%, #f0ece8 100%);
+    padding: 5rem 2rem;
+  }
+
+  .mirror-inner {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 1.2rem;
+  }
+
+  .section-tag::before, .section-tag::after {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--blush);
+  }
+
+  .mirror-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    color: var(--warm);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .mirror-title em { font-style: italic; color: var(--rose); }
+
+  .mirror-sub {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
     line-height: 1.8;
   }
 
-  .scroll-hint {
-    margin-top: 3.5rem;
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--soft);
-    opacity: 0;
-    animation: fadeUp 1s 1.3s ease forwards;
+  /* the actual mirror frame */
+  .mirror-frame {
+    width: 200px;
+    height: 260px;
+    margin: 0 auto 2.5rem;
+    position: relative;
   }
 
-  .scroll-hint span {
-    display: block;
-    margin-top: 0.5rem;
-    animation: bounce 2s 2s ease-in-out infinite;
+  .mirror-oval {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid var(--blush);
+    background: linear-gradient(145deg, #fff8f6, #fdf0ec);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    box-shadow: 0 0 0 8px rgba(240,196,188,0.2), 0 12px 40px rgba(180,100,80,0.12);
+    position: relative;
+    overflow: hidden;
   }
 
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(5px); }
+  .mirror-oval::after {
+    content: '';
+    position: absolute;
+    top: 12%; left: 18%;
+    width: 22%; height: 35%;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    transform: rotate(-20deg);
+    pointer-events: none;
   }
 
-  /* ════════════════════════════════
-     SECTIONS
-  ════════════════════════════════ */
-  .section {
-    max-width: 640px;
+  .mirror-face { font-size: 3.8rem; line-height: 1; }
+
+  .mirror-words {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--rose);
+    text-align: center;
+    padding: 0 1rem;
+    line-height: 1.5;
+  }
+
+  /* truth pills */
+  .truths {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    text-align: left;
+  }
+
+  .truth-pill {
+    background: white;
+    border-radius: 999px;
+    padding: 0.85rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    box-shadow: 0 2px 12px rgba(180,100,80,0.07);
+    font-size: 0.95rem;
+    color: #5a4038;
+    transition: transform 0.2s ease;
+  }
+
+  .truth-pill:hover { transform: scale(1.02); }
+
+  .truth-pill .pip {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--rose);
+    flex-shrink: 0;
+  }
+
+  /* ════════════════════
+     STRESS SECTION
+  ════════════════════ */
+  .stress-section {
+    max-width: 620px;
     margin: 0 auto;
     padding: 5rem 2rem;
   }
 
-  .section-label {
-    font-size: 0.62rem;
-    font-weight: 400;
-    letter-spacing: 0.26em;
-    text-transform: uppercase;
-    color: var(--rose);
+  .stress-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    color: var(--warm);
+    line-height: 1.25;
     margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
+    margin-top: 1rem;
   }
 
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 28px; height: 1px;
-    background: var(--blush);
-    flex-shrink: 0;
-  }
+  .stress-title em { font-style: italic; color: var(--sage); }
 
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.7rem, 5vw, 2.5rem);
-    font-weight: 400;
-    line-height: 1.3;
-    color: var(--warm);
-    margin-bottom: 1.6rem;
-  }
-
-  .section-title em { font-style: italic; color: var(--rose); }
-
-  .section-body {
-    font-size: 1.05rem;
-    line-height: 1.95;
-    color: var(--muted);
-  }
-
-  .section-body strong {
-    font-weight: 400;
-    color: var(--warm);
-  }
-
-  /* ════════════════════════════════
-     OVERTHINKER CARD
-  ════════════════════════════════ */
-  .think-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-
-  .think-card {
-    background: white;
-    border-left: 3px solid var(--blush);
-    border-radius: 0 12px 12px 0;
-    padding: 1.2rem 1.5rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1rem;
-    align-items: start;
-    box-shadow: 0 2px 16px rgba(200,130,120,0.07);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .think-card:hover {
-    transform: translateX(4px);
-    box-shadow: 0 4px 20px rgba(200,130,120,0.12);
-  }
-
-  .think-card .icon {
-    font-size: 1.3rem;
-    margin-top: 0.1rem;
-  }
-
-  .think-card .thought {
-    font-size: 0.85rem;
-    color: var(--soft);
-    font-style: italic;
-    margin-bottom: 0.3rem;
-    line-height: 1.5;
-  }
-
-  .think-card .answer {
-    font-size: 0.95rem;
-    color: var(--warm);
-    line-height: 1.6;
-  }
-
-  /* ════════════════════════════════
-     GET WELL SECTION
-  ════════════════════════════════ */
-  .get-well-box {
-    background: linear-gradient(135deg, #fff5f5 0%, #f0f7ef 100%);
-    border-radius: 20px;
-    padding: 2.5rem 2rem;
-    margin-top: 2rem;
-    text-align: center;
-    box-shadow: 0 4px 24px rgba(180,120,110,0.08);
-  }
-
-  .get-well-box .big-icon {
-    font-size: 3rem;
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-  .get-well-box p {
+  .stress-body {
     font-size: 1rem;
-    line-height: 1.9;
     color: var(--muted);
+    line-height: 2;
+    margin-bottom: 2rem;
   }
 
-  .get-well-box p strong {
-    color: var(--warm);
-    font-weight: 400;
-  }
-
-  .remedy-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    justify-content: center;
-    margin-top: 1.6rem;
-  }
-
-  .remedy {
-    background: white;
-    border: 1px solid var(--blush);
-    border-radius: 999px;
-    padding: 0.4rem 1rem;
-    font-size: 0.82rem;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  /* ════════════════════════════════
-     FLOWER DIVIDER
-  ════════════════════════════════ */
-  .flower-divider {
-    text-align: center;
-    color: var(--blush);
-    font-size: 1.3rem;
-    letter-spacing: 0.5rem;
-    padding: 1rem 0;
-    user-select: none;
-  }
-
-  /* ════════════════════════════════
-     REASONS STRIP
-  ════════════════════════════════ */
-  .reasons-grid {
+  .reminder-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    margin-top: 2rem;
   }
 
-  @media (max-width: 480px) {
-    .reasons-grid { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 500px) { .reminder-cards { grid-template-columns: 1fr; } }
 
-  .reason-card {
-    background: white;
-    border-radius: 16px;
-    padding: 1.4rem 1.2rem;
-    box-shadow: 0 2px 14px rgba(200,130,120,0.07);
+  .reminder-card {
+    border-radius: 18px;
+    padding: 1.4rem;
+    position: relative;
+    overflow: hidden;
     transition: transform 0.2s ease;
   }
 
-  .reason-card:hover { transform: translateY(-3px); }
+  .reminder-card:hover { transform: translateY(-3px); }
 
-  .reason-card .num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: var(--blush);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
+  .reminder-card.rose-bg    { background: #fef0ee; }
+  .reminder-card.sage-bg    { background: var(--foam); }
+  .reminder-card.lavender-bg{ background: #f0ecf8; }
+  .reminder-card.sky-bg     { background: #ecf4fa; }
 
-  .reason-card p {
-    font-size: 0.92rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
+  .reminder-card .card-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
 
-  .reason-card p strong {
+  .reminder-card .card-title {
+    font-weight: 500;
+    font-size: 0.9rem;
     color: var(--warm);
-    font-weight: 400;
-    display: block;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.35rem;
   }
 
-  /* ════════════════════════════════
-     CLOSING
-  ════════════════════════════════ */
-  .closing {
-    text-align: center;
-    padding: 5rem 2rem 6rem;
-    max-width: 560px;
+  .reminder-card .card-text {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ════════════════════
+     FUTURE SECTION
+  ════════════════════ */
+  .future-section {
+    background: linear-gradient(160deg, var(--foam) 0%, #f4f0f8 100%);
+    padding: 5rem 2rem;
+  }
+
+  .future-inner {
+    max-width: 620px;
     margin: 0 auto;
   }
 
-  .closing .big-blossom {
-    font-size: 4rem;
-    display: block;
-    margin-bottom: 1.5rem;
-    animation: floatSway 5s ease-in-out infinite;
+  .future-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+    color: var(--warm);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
   }
 
-  @keyframes floatSway {
-    0%, 100% { transform: translateY(0) rotate(-3deg); }
-    50%       { transform: translateY(-10px) rotate(3deg); }
+  .future-title em { font-style: italic; color: var(--lavender); }
+
+  .future-body {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 2;
+    margin-bottom: 2rem;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--blush), var(--lavender), var(--sage));
+  }
+
+  .tl-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 2rem;
+    position: relative;
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: -2rem;
+    top: 4px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--blush);
+    flex-shrink: 0;
+  }
+
+  .tl-content .tl-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 0.25rem;
+  }
+
+  .tl-content .tl-text {
+    font-size: 0.95rem;
+    color: #5a4038;
+    line-height: 1.75;
+  }
+
+  /* ════════════════════
+     CLOSING
+  ════════════════════ */
+  .closing-wrap {
+    text-align: center;
+    padding: 5rem 2rem 7rem;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .closing-bloom {
+    font-size: 4.5rem;
+    display: block;
+    animation: gentleSway 6s ease-in-out infinite;
+    margin-bottom: 1.5rem;
+  }
+
+  @keyframes gentleSway {
+    0%,100% { transform: rotate(-4deg) translateY(0); }
+    50%      { transform: rotate(4deg) translateY(-8px); }
   }
 
   .closing-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 6vw, 3rem);
-    font-weight: 400;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 7vw, 3.5rem);
     font-style: italic;
     color: var(--warm);
-    line-height: 1.3;
-    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.4rem;
   }
 
   .closing-body {
     font-size: 1rem;
-    line-height: 2;
     color: var(--muted);
+    line-height: 2.1;
+    margin-bottom: 2rem;
   }
 
-  .sign-off {
-    margin-top: 2.5rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
+  .closing-body strong { color: var(--warm); font-weight: 500; }
+
+  .sign {
+    font-family: 'DM Serif Display', serif;
     font-style: italic;
+    font-size: 1.15rem;
     color: var(--rose);
   }
 
-  /* ════════════════════════════════
-     SHARED ANIMATIONS
-  ════════════════════════════════ */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(22px); }
-    to   { opacity: 1; transform: translateY(0); }
+  /* ════════════════════
+     SHARED
+  ════════════════════ */
+  @keyframes riseIn {
+    from { opacity:0; transform: translateY(20px); }
+    to   { opacity:1; transform: translateY(0); }
   }
 
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.9s ease, transform 0.9s ease;
+    transform: translateY(26px);
+    transition: opacity 1s ease, transform 1s ease;
   }
 
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal.on { opacity: 1; transform: translateY(0); }
 
-  /* ════════════════════════════════
-     BG BLOBS
-  ════════════════════════════════ */
-  .blob {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.18;
-    pointer-events: none;
-    z-index: 0;
+  /* decorative divider */
+  .petal-divider {
+    text-align: center;
+    font-size: 1.1rem;
+    letter-spacing: 0.5rem;
+    color: var(--blush);
+    padding: 0.5rem 0;
+    user-select: none;
   }
-
-  .blob-1 { width: 420px; height: 420px; background: #f5b8b8; top: -100px; right: -80px; }
-  .blob-2 { width: 340px; height: 340px; background: #b5d6b0; bottom: 10%; left: -80px; }
-  .blob-3 { width: 280px; height: 280px; background: #f9d4c0; bottom: 30%; right: 5%; }
 </style>
 </head>
 <body>
 
-<canvas id="petal-canvas"></canvas>
-<div class="blob blob-1"></div>
-<div class="blob blob-2"></div>
-<div class="blob blob-3"></div>
+<canvas id="bloom-canvas"></canvas>
 
-<!-- ══════════ HERO ══════════ -->
+<!-- ══════ HERO ══════ -->
 <header>
-  <p class="badge">🌸 August 1 · World Girlfriend Day</p>
-  <div class="hero-flower">🌸</div>
+  <p class="hero-eyebrow">just for you 🌸</p>
+  <div class="hero-bloom">🌸</div>
   <h1 class="hero-title">
-    Happy Girlfriend Day,<br><em>Blossom.</em>
+    Hey,<br><em>Neha.</em>
   </h1>
   <p class="hero-sub">
-    Today the whole world celebrates girlfriends.<br>
-    But I only need to celebrate one.
+    I know things feel really heavy right now.<br>
+    I made this because I wanted you to feel<br>
+    seen — every single part of you.
   </p>
-  <p class="scroll-hint">
-    this is for you, Neha
-    <span>↓</span>
-  </p>
+  <div class="scroll-nudge">
+    this is all for you
+    <span class="arrow">↓</span>
+  </div>
 </header>
 
-<!-- ══════════ SICK SECTION ══════════ -->
-<section>
-  <div class="section reveal">
-    <p class="section-label">one week &amp; counting</p>
-    <h2 class="section-title">
-      Get well soon,<br><em>my blossom 🌿</em>
-    </h2>
-    <p class="section-body">
-      You've been fighting this for a whole week now, and I know that's exhausting — not just your body, 
-      but your mind too. Being sick and stuck is hard. But you're tougher than you think, 
-      and you <strong>will</strong> feel like yourself again soon. I promise.
-    </p>
-
-    <div class="get-well-box">
-      <span class="big-icon">🫖</span>
+<!-- ══════ LETTER ══════ -->
+<section class="letter-section">
+  <div class="letter-paper reveal">
+    <p class="letter-date">a letter, from someone who means it</p>
+    <p class="letter-greeting">Dear blossom,</p>
+    <div class="letter-body">
       <p>
-        Right now I just want you to <strong>rest</strong>.<br>
-        Drink warm things. Sleep too much.<br>
-        Let yourself be taken care of —<br>
-        even if that means <strong>doing absolutely nothing</strong>,<br>
-        and that's okay. You're allowed.
+        I see you. Not just the version of you that smiles through it —
+        the real you. The one carrying <strong>study pressure, tuition, expectations,
+        skin worries, and a quiet fear about the future</strong> all at once.
+        That's a lot. That's genuinely, honestly a lot.
       </p>
-      <div class="remedy-list">
-        <span class="remedy">🍵 warm tea</span>
-        <span class="remedy">🛌 lots of rest</span>
-        <span class="remedy">🍲 warm soup</span>
-        <span class="remedy">📖 cozy book</span>
-        <span class="remedy">🧸 comfort everything</span>
-        <span class="remedy">💊 your meds on time</span>
-      </div>
+      <p>
+        And I want you to know — you are not falling behind.
+        You are not a failure. You are a person going through
+        <em>a really hard season</em>, and there is a difference.
+      </p>
+      <p>
+        The acne? It doesn't change what I see when I look at you.
+        Not even slightly. Treatment takes time. <strong>Your skin is healing,
+        even when you can't see it yet.</strong> Your worth was never in your
+        skin to begin with.
+      </p>
+      <p>
+        And your parents? They love you. Their expectations come from
+        that love — but loving you was never conditional on you being perfect.
+        <strong>You don't have to earn your place in this world, Neha.</strong>
+        You already belong here.
+      </p>
     </div>
+    <p class="letter-sign">— written with my whole heart 🌸</p>
   </div>
 </section>
 
-<div class="flower-divider reveal">🌸 ✿ 🌸 ✿ 🌸</div>
-
-<!-- ══════════ OVERTHINKER ══════════ -->
-<section>
-  <div class="section reveal">
-    <p class="section-label">for your busy mind</p>
-    <h2 class="section-title">
-      Hey, I know you're<br><em>overthinking again.</em>
-    </h2>
-    <p class="section-body">
-      Your mind never really goes quiet, does it? You probably have a hundred thoughts 
-      running right now, even while you're sick. So let me answer a few of them before 
-      you spiral too far. 🌸
+<!-- ══════ MIRROR ══════ -->
+<section class="mirror-section">
+  <div class="mirror-inner">
+    <p class="section-tag reveal">for your mirror moments</p>
+    <h2 class="mirror-title reveal">What you look like<br><em>to me.</em></h2>
+    <p class="mirror-sub reveal">
+      On the days you avoid your reflection — this is what I want you to remember.
     </p>
 
-    <div class="think-cards">
-      <div class="think-card">
-        <span class="icon">💭</span>
-        <div>
-          <p class="thought">"does he actually like me or is he just being nice?"</p>
-          <p class="answer">Neha. I made you a whole website. It's you. It's always been you.</p>
-        </div>
+    <div class="mirror-frame reveal">
+      <div class="mirror-oval">
+        <span class="mirror-face">🌸</span>
+        <p class="mirror-words">still beautiful,<br>still whole</p>
       </div>
+    </div>
 
-      <div class="think-card">
-        <span class="icon">💭</span>
-        <div>
-          <p class="thought">"am i being too much right now?"</p>
-          <p class="answer">No. You could never be too much. You're the right amount of everything.</p>
-        </div>
-      </div>
-
-      <div class="think-card">
-        <span class="icon">💭</span>
-        <div>
-          <p class="thought">"what if i'm annoying him?"</p>
-          <p class="answer">You're not. Talking to you is the best part of my day, even on the quiet ones.</p>
-        </div>
-      </div>
-
-      <div class="think-card">
-        <span class="icon">💭</span>
-        <div>
-          <p class="thought">"i hate being sick, i feel so useless"</p>
-          <p class="answer">Rest is not useless. You're healing. Your only job right now is to get better — and you're doing it.</p>
-        </div>
-      </div>
-
-      <div class="think-card">
-        <span class="icon">💭</span>
-        <div>
-          <p class="thought">"does he think about me?"</p>
-          <p class="answer">I made this for you on World Girlfriend Day while you were sick. What do you think? 🌸</p>
-        </div>
-      </div>
+    <div class="truths reveal">
+      <div class="truth-pill"><div class="pip"></div> Acne is a skin condition — not a verdict on who you are.</div>
+      <div class="truth-pill"><div class="pip"></div> Treatment takes weeks to show. You are not stuck like this.</div>
+      <div class="truth-pill"><div class="pip"></div> The people who love you see <em>you</em>, not your skin.</div>
+      <div class="truth-pill"><div class="pip"></div> You have looked beautiful every single day I've known you.</div>
+      <div class="truth-pill"><div class="pip"></div> Healing isn't linear. Be patient with yourself, blossom.</div>
     </div>
   </div>
 </section>
 
-<div class="flower-divider reveal">✿ 🌸 ✿ 🌸 ✿</div>
-
-<!-- ══════════ REASONS ══════════ -->
-<section>
-  <div class="section reveal">
-    <p class="section-label">in case you forgot</p>
-    <h2 class="section-title">
-      Why you are<br><em>so easy to love.</em>
-    </h2>
-
-    <div class="reasons-grid">
-      <div class="reason-card">
-        <p class="num">I</p>
-        <p><strong>The way you feel things deeply</strong> — you love with your whole heart, even if it scares you sometimes.</p>
-      </div>
-      <div class="reason-card">
-        <p class="num">II</p>
-        <p><strong>Your overthinking</strong> — it means you care. About everything. And everyone.</p>
-      </div>
-      <div class="reason-card">
-        <p class="num">III</p>
-        <p><strong>Even sick for a week</strong>, you're still the most beautiful thing in my world.</p>
-      </div>
-      <div class="reason-card">
-        <p class="num">IV</p>
-        <p><strong>You make ordinary days</strong> feel like something worth remembering.</p>
-      </div>
-      <div class="reason-card">
-        <p class="num">V</p>
-        <p><strong>"Blossom"</strong> — because that's what you do. You bloom, quietly, in your own time.</p>
-      </div>
-      <div class="reason-card">
-        <p class="num">VI</p>
-        <p><strong>You're mine.</strong> And that alone makes today worth celebrating.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ CLOSING ══════════ -->
-<div class="closing reveal">
-  <span class="big-blossom">🌸</span>
-  <h2 class="closing-title">
-    Happy Girlfriend Day,<br>Neha.
+<!-- ══════ STRESS ══════ -->
+<section class="stress-section">
+  <p class="section-tag reveal">for when it feels like too much</p>
+  <h2 class="stress-title reveal">
+    Study. Tuition. Life.<br><em>It's okay to be tired.</em>
   </h2>
-  <p class="closing-body">
-    Get well soon. Stop overthinking.<br>
-    Drink your tea. Take your meds.<br>
-    And know that somewhere,<br>
-    someone is thinking about you<br>
-    every single hour of today.<br><br>
-    You are so, so loved — even on<br>
-    the sick, tired, quiet days.
+  <p class="stress-body reveal">
+    You're not weak for feeling overwhelmed. You're carrying more than most people
+    realise — and you're still showing up every day. That takes strength.
+    Here's what I need you to remember:
   </p>
-  <p class="sign-off">— always yours 🌸</p>
+
+  <div class="reminder-cards reveal">
+    <div class="reminder-card rose-bg">
+      <div class="card-icon">🫁</div>
+      <p class="card-title">One thing at a time</p>
+      <p class="card-text">You don't have to solve everything today. One hour, one task, one breath.</p>
+    </div>
+    <div class="reminder-card sage-bg">
+      <div class="card-icon">🌿</div>
+      <p class="card-title">Rest is productive</p>
+      <p class="card-text">Your brain needs rest to learn. Breaks aren't laziness — they're part of studying.</p>
+    </div>
+    <div class="reminder-card lavender-bg">
+      <div class="card-icon">💜</div>
+      <p class="card-title">You are allowed to struggle</p>
+      <p class="card-text">Struggling doesn't mean failing. It means you're trying something that matters.</p>
+    </div>
+    <div class="reminder-card sky-bg">
+      <div class="card-icon">🌤</div>
+      <p class="card-title">This season will pass</p>
+      <p class="card-text">This exact hard moment — it has an end date, even if you can't see it yet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FUTURE ══════ -->
+<section class="future-section">
+  <div class="future-inner">
+    <p class="section-tag reveal">about your future</p>
+    <h2 class="future-title reveal">
+      You are not a failure,<br><em>Neha. Not even close.</em>
+    </h2>
+    <p class="future-body reveal">
+      I know your mind loves to jump to worst-case scenarios. So let me
+      tell you what I actually see when I look at your life —
+    </p>
+
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <p class="tl-label">Right now</p>
+          <p class="tl-text">You're going through one of the hardest seasons — stress, health, pressure — and you are <strong>still here. Still trying.</strong> That is not failure.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <p class="tl-label">What your parents actually want</p>
+          <p class="tl-text">Underneath the expectations is just love and worry. They want you to be okay. <strong>They are not keeping score the way your anxiety tells you they are.</strong></p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <p class="tl-label">What failure actually looks like</p>
+          <p class="tl-text">It's not falling behind. It's not having hard days. <strong>It's giving up — and you haven't.</strong> You're still going. That means you're still winning.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <p class="tl-label">Where you're headed</p>
+          <p class="tl-text">I don't know exactly how it'll look — but I know you're going to get there. <strong>You're too caring, too determined, too you</strong> for it to go any other way.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CLOSING ══════ -->
+<div class="closing-wrap">
+  <span class="closing-bloom reveal">🌸</span>
+  <h2 class="closing-title reveal">You are enough,<br>exactly as you are.</h2>
+  <p class="closing-body reveal">
+    Stressed. Tired. Skin healing. Worried.<br>
+    <strong>Still enough. Still loved. Still Neha.</strong><br><br>
+    On the days you can't believe that yourself,<br>
+    I'll believe it for both of us.<br><br>
+    Get some rest. Drink some water.<br>
+    And know that the person who made you this page<br>
+    thinks you are the most wonderful person<br>
+    in every room you walk into — always.
+  </p>
+  <p class="sign reveal">— your blossom believer 🌸</p>
 </div>
 
 <script>
-  /* ── Falling petals ── */
-  const canvas = document.getElementById('petal-canvas');
+  /* ── Gentle floating petals ── */
+  const canvas = document.getElementById('bloom-canvas');
   const ctx = canvas.getContext('2d');
   let petals = [];
 
@@ -608,41 +736,38 @@
     canvas.height = window.innerHeight;
   }
 
-  const COLORS = ['#f5b8b8','#f9d4d4','#c4a882','#d4b8c0','#b5c9b0'];
+  const COLORS = ['#f0c4bc','#d4c0e0','#b8d4b0','#f5d8c0','#c4d8e8'];
 
-  function makePetal(fromTop) {
+  function spawnPetal(fromTop) {
     return {
-      x: Math.random() * canvas.width,
-      y: fromTop ? -14 : Math.random() * canvas.height,
-      w: Math.random() * 9 + 5,
-      h: Math.random() * 5 + 3,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: Math.random() * 0.5 + 0.18,
-      rot: Math.random() * Math.PI * 2,
-      rotV: (Math.random() - 0.5) * 0.014,
-      wobble: Math.random() * Math.PI * 2,
-      wobbleS: Math.random() * 0.02 + 0.007,
+      x:  Math.random() * canvas.width,
+      y:  fromTop ? -16 : Math.random() * canvas.height,
+      w:  Math.random() * 10 + 5,
+      h:  Math.random() * 5 + 3,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: Math.random() * 0.4 + 0.14,
+      rot:   Math.random() * Math.PI * 2,
+      rotV:  (Math.random() - 0.5) * 0.012,
+      wob:   Math.random() * Math.PI * 2,
+      wobS:  Math.random() * 0.018 + 0.006,
       color: COLORS[Math.floor(Math.random() * COLORS.length)],
-      alpha: Math.random() * 0.45 + 0.12
+      alpha: Math.random() * 0.35 + 0.1
     };
   }
 
   function initPetals() {
     petals = [];
-    for (let i = 0; i < 30; i++) petals.push(makePetal(false));
+    for (let i = 0; i < 28; i++) petals.push(spawnPetal(false));
   }
 
-  let t = 0;
   function loop() {
-    t += 0.4;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     petals.forEach((p, i) => {
-      p.wobble += p.wobbleS;
-      p.x += p.vx + Math.sin(p.wobble) * 0.3;
+      p.wob += p.wobS;
+      p.x += p.vx + Math.sin(p.wob) * 0.28;
       p.y += p.vy;
       p.rot += p.rotV;
-      if (p.y > canvas.height + 20) petals[i] = makePetal(true);
-
+      if (p.y > canvas.height + 20) petals[i] = spawnPetal(true);
       ctx.save();
       ctx.translate(p.x, p.y);
       ctx.rotate(p.rot);
@@ -660,16 +785,12 @@
   window.addEventListener('resize', () => { resize(); initPetals(); });
 
   /* ── Scroll reveal ── */
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
+  const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
     });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => observer.observe(el));
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
