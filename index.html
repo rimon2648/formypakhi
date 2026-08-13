@@ -1,736 +1,547 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For the days you forget how beautiful you are 🌸</title>
 
-<title>For Neha ❤️</title>
-
-<style>
+  <style>
     * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-        min-height: 100vh;
-        overflow: hidden;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background:
-            radial-gradient(circle at top left, #ffd5e5, transparent 35%),
-            radial-gradient(circle at bottom right, #ffe3c2, transparent 35%),
-            linear-gradient(135deg, #fff0f5, #ffe8ef);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        color: #3d3035;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffdce7, #fff3f7, #ffe8ef);
+      color: #51333d;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .screen {
-        display: none;
-        width: 100%;
-        max-width: 430px;
-        text-align: center;
-        animation: fadeIn .7s ease;
-        position: relative;
-        z-index: 5;
-    }
-
-    .screen.active {
-        display: block;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(18px) scale(.97);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
+    .container {
+      width: 92%;
+      max-width: 650px;
+      margin: auto;
+      padding: 50px 0 80px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
     }
 
     .card {
-        background: rgba(255,255,255,.88);
-        backdrop-filter: blur(14px);
-        border: 1px solid rgba(255,255,255,.7);
-        padding: 32px 24px;
-        border-radius: 30px;
-        box-shadow: 0 20px 60px rgba(121, 61, 85, .15);
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(14px);
+      border-radius: 28px;
+      padding: 32px 24px;
+      box-shadow: 0 15px 45px rgba(133, 70, 93, 0.15);
+      margin-bottom: 25px;
+      animation: fadeUp 0.9s ease;
     }
 
     h1 {
-        font-size: 29px;
-        margin-bottom: 15px;
+      font-size: 2rem;
+      margin-bottom: 14px;
+      color: #b94e73;
     }
 
     h2 {
-        font-size: 22px;
-        margin-bottom: 14px;
+      color: #a44567;
+      margin-bottom: 18px;
     }
 
     p {
-        line-height: 1.7;
-        font-size: 16px;
-        margin-bottom: 17px;
-    }
-
-    .pink {
-        color: #ff4f81;
+      font-size: 1.08rem;
+      line-height: 1.7;
     }
 
     .small {
-        font-size: 13px;
-        opacity: .65;
-        margin-top: 14px;
+      opacity: 0.75;
+      font-size: 0.95rem;
+      margin-top: 12px;
+    }
+
+    .mirror {
+      width: 210px;
+      height: 270px;
+      margin: 25px auto;
+      border: 12px solid #efadc2;
+      border-radius: 50% 50% 42% 42%;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.8),
+        rgba(255,218,232,0.65)
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      box-shadow:
+        inset 0 0 30px rgba(255,255,255,.9),
+        0 10px 30px rgba(158,74,105,.2);
+    }
+
+    .mirror-text {
+      font-size: 1.1rem;
+      line-height: 1.7;
     }
 
     button {
-        border: none;
-        border-radius: 50px;
-        padding: 14px 24px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        background: #ff5c8a;
-        color: white;
-        box-shadow: 0 8px 22px rgba(255,92,138,.28);
-        transition: .25s;
-        margin: 6px;
+      border: none;
+      background: #d85f88;
+      color: white;
+      padding: 14px 22px;
+      margin: 8px;
+      border-radius: 100px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 7px 18px rgba(216,95,136,.25);
     }
 
-    button:active {
-        transform: scale(.95);
+    button:hover {
+      transform: translateY(-3px) scale(1.02);
+      background: #c94d78;
     }
 
-    .envelope-wrapper {
-        height: 250px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        perspective: 1000px;
+    .hidden {
+      display: none;
     }
 
-    .envelope {
-        position: relative;
-        width: 280px;
-        height: 175px;
-        background: #ff94b3;
-        border-radius: 8px;
-        box-shadow: 0 20px 50px rgba(117, 59, 82, .2);
-        cursor: pointer;
+    .qualities {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
     }
 
-    .envelope::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: #ff789f;
-        clip-path: polygon(0 0, 50% 58%, 100% 0);
-        transform-origin: top;
-        transition: .8s;
-        z-index: 4;
+    .quality {
+      background: #ffe7ef;
+      border-radius: 18px;
+      padding: 16px 10px;
+      font-weight: 600;
     }
 
-    .envelope::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: #ffa7c0;
-        clip-path: polygon(0 100%, 0 0, 50% 58%, 100% 0, 100% 100%);
-        z-index: 3;
+    .quote {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #b3456d;
+      margin: 20px 0;
+      min-height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .letter {
-        position: absolute;
-        width: 240px;
-        height: 145px;
-        background: white;
-        left: 20px;
-        top: 15px;
-        border-radius: 8px;
-        padding-top: 35px;
-        transition: 1s;
-        z-index: 2;
-        font-size: 18px;
-        font-weight: 600;
-        color: #ff4f81;
+    .emergency {
+      background: linear-gradient(135deg, #d95680, #ea789a);
+      color: white;
     }
 
-    .envelope.open::before {
-        transform: rotateX(180deg);
-        z-index: 1;
+    .emergency h2 {
+      color: white;
     }
 
-    .envelope.open .letter {
-        transform: translateY(-100px);
-        z-index: 5;
+    .emergency button {
+      background: white;
+      color: #cf537c;
+      font-weight: 700;
     }
 
-    .heart-seal {
-        position: absolute;
-        z-index: 6;
-        font-size: 42px;
-        left: 50%;
-        top: 52%;
-        transform: translate(-50%, -50%);
-        transition: .5s;
-    }
-
-    .envelope.open .heart-seal {
-        opacity: 0;
-    }
-
-    .violation {
-        background: #fffdf8;
-        border: 2px dashed #e8a9b9;
-        border-radius: 18px;
-        padding: 25px 20px;
-        text-align: left;
-        transform: rotate(-1deg);
-        margin: 15px 0 22px;
-    }
-
-    .violation h2 {
-        text-align: center;
-        color: #d94d73;
-    }
-
-    .violation-row {
-        margin: 12px 0;
-        font-size: 15px;
-    }
-
-    .stamp {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 24px;
-        color: #de335f;
-        font-weight: 900;
-        transform: rotate(-7deg);
-        border: 4px solid #de335f;
-        border-radius: 8px;
-        padding: 7px;
-        width: max-content;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .sun {
-        font-size: 75px;
-        animation: sunBounce 1.8s infinite;
-        display: inline-block;
-    }
-
-    @keyframes sunBounce {
-        0%,100% { transform: translateY(0) rotate(0); }
-        50% { transform: translateY(-10px) rotate(8deg); }
-    }
-
-    .button-zone {
-        height: 120px;
-        position: relative;
-        margin-top: 10px;
-    }
-
-    #forgiveBtn {
-        position: absolute;
-        left: 5px;
-        top: 25px;
-    }
-
-    #madBtn {
-        position: absolute;
-        right: 5px;
-        top: 25px;
-        background: #9b8990;
-        box-shadow: none;
-        transition: .15s;
-    }
-
-    .floating {
-        position: fixed;
-        bottom: -50px;
-        pointer-events: none;
-        animation: floatUp linear forwards;
-        z-index: 2;
-    }
-
-    @keyframes floatUp {
-        0% {
-            transform: translateY(0) rotate(0);
-            opacity: 1;
-        }
-
-        100% {
-            transform: translateY(-115vh) rotate(360deg);
-            opacity: 0;
-        }
-    }
-
-    .big-heart {
-        font-size: 90px;
-        animation: heartbeat 1s infinite;
-    }
-
-    @keyframes heartbeat {
-        0%,100% { transform: scale(1); }
-        25% { transform: scale(1.12); }
-        40% { transform: scale(1); }
-        60% { transform: scale(1.12); }
+    .final-message {
+      font-size: 1.15rem;
     }
 
     .signature {
-        font-family: cursive;
-        font-size: 20px;
-        color: #e54d77;
-        margin-top: 22px;
+      margin-top: 25px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #bd5176;
     }
 
-</style>
+    .flower {
+      position: fixed;
+      top: -50px;
+      pointer-events: none;
+      z-index: 1;
+      animation: fall linear infinite;
+      opacity: 0.6;
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 25px;
+      animation: floatHeart 2.5s ease forwards;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+
+    @keyframes floatHeart {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(.7);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-250px) scale(1.5);
+      }
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.65rem;
+      }
+
+      .qualities {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 27px 18px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- SCREEN 1 -->
+  <div class="container">
 
-<div class="screen active" id="screen1">
-
+    <!-- INTRO -->
     <div class="card">
+      <h1>Hey Neha 🌸</h1>
 
-        <h1>Special delivery for <span class="pink">Neha</span> 💌</h1>
+      <p>
+        On the days when you look in the mirror and become a little too harsh
+        on yourself...
+      </p>
 
-        <p>
-            Someone has been charged with a serious relationship offence.
-        </p>
+      <p class="small">
+        I made you another mirror.
+      </p>
 
-        <div class="envelope-wrapper">
-
-            <div class="envelope" id="envelope" onclick="openEnvelope()">
-
-                <div class="letter">
-                    I'm sorry 🥺❤️
-                </div>
-
-                <div class="heart-seal">❤️</div>
-
-            </div>
-
+      <div class="mirror">
+        <div class="mirror-text" id="mirrorText">
+          What you sometimes see:
+          <br><br>
+          acne.<br>
+          marks.<br>
+          imperfections.
         </div>
+      </div>
 
-        <p class="small">
-            Tap the envelope to open it
-        </p>
+      <button onclick="changeMirror()">
+        Now see yourself through my eyes ❤️
+      </button>
+    </div>
+
+
+    <!-- WHAT I SEE -->
+    <div class="card hidden" id="myEyes">
+      <h2>What I see 🤍</h2>
+
+      <div class="qualities">
+        <div class="quality">Your beautiful eyes 👀</div>
+        <div class="quality">Your smile 🌸</div>
+        <div class="quality">Your softness 🤍</div>
+        <div class="quality">Your strength ✨</div>
+        <div class="quality">Your silly expressions 😂</div>
+        <div class="quality">Your whole beautiful face 🥹</div>
+      </div>
+
+      <p style="margin-top:25px;">
+        And somewhere underneath all those tiny things you keep analysing...
+      </p>
+
+      <p style="font-size:1.35rem; margin-top:12px; font-weight:700;">
+        I just see Neha.
+      </p>
+
+      <button onclick="showSkinMessage()">
+        But what about my skin? 🥺
+      </button>
+    </div>
+
+
+    <!-- SKIN MESSAGE -->
+    <div class="card hidden" id="skinMessage">
+
+      <h2>About your skin...</h2>
+
+      <p class="quote">
+        Your skin is having a hard time.<br>
+        You are not the problem.
+      </p>
+
+      <p>
+        Acne can affect your skin.
+        It can annoy you.
+        It can make you frustrated.
+        And yes, some days it can make you feel less confident.
+      </p>
+
+      <p style="margin-top:15px;">
+        But it cannot erase your eyes, your smile, your personality,
+        your softness, your heart, or the person I fell for.
+      </p>
+
+      <p style="margin-top:20px; font-weight:700;">
+        Clear skin is not a requirement for being loved.
+      </p>
 
     </div>
 
-</div>
 
-
-<!-- SCREEN 2 -->
-
-<div class="screen" id="screen2">
-
+    <!-- RANDOM REASSURANCE -->
     <div class="card">
 
-        <div style="font-size:60px;">🚨</div>
+      <h2>Need reassurance? 🥺</h2>
 
-        <h1>Boyfriend Violation Notice</h1>
+      <p>
+        Press this whenever your brain starts being mean to you.
+      </p>
 
-        <div class="violation">
+      <div class="quote" id="reassurance">
+        I'm waiting 😌
+      </div>
 
-            <h2>OFFICIAL NOTICE</h2>
-
-            <div class="violation-row">
-                <b>Accused:</b> Your stupid boyfriend
-            </div>
-
-            <div class="violation-row">
-                <b>Victim:</b> Neha 🥺
-            </div>
-
-            <div class="violation-row">
-                <b>Crime:</b> Failure to send Good Morning text
-            </div>
-
-            <div class="violation-row">
-                <b>Frequency:</b> Suspiciously more than once 💀
-            </div>
-
-            <div class="violation-row">
-                <b>Excuse:</b> "I woke up and went straight to work"
-            </div>
-
-            <div class="violation-row">
-                <b>Court's response:</b> Bro... it takes 10 seconds.
-            </div>
-
-            <div class="stamp">
-                GUILTY 😭
-            </div>
-
-        </div>
-
-        <button onclick="goTo(3)">
-            Hear his defence ⚖️
-        </button>
+      <button onclick="giveReassurance()">
+        Reassure me ❤️
+      </button>
 
     </div>
 
-</div>
+
+    <!-- EMERGENCY -->
+    <div class="card emergency">
+
+      <h2>🚨 Bad Skin Day Emergency Button 🚨</h2>
+
+      <p>
+        For extremely serious situations where Neha has decided
+        she suddenly isn't beautiful anymore.
+      </p>
+
+      <button onclick="emergencyMode()">
+        PRESS IN CASE OF INSECURITY
+      </button>
+
+      <p
+        id="emergencyText"
+        style="font-size:1.4rem; font-weight:700; margin-top:20px;"
+      ></p>
+
+    </div>
 
 
-<!-- SCREEN 3 -->
-
-<div class="screen" id="screen3">
-
+    <!-- FINAL -->
     <div class="card">
 
-        <div style="font-size:65px;">🥺</div>
+      <h2>One last thing...</h2>
 
-        <h1>Okay... my defence.</h1>
+      <p class="final-message">
 
-        <p>
-            I woke up, got ready, rushed straight to work
-            and somehow didn't stop for even ten seconds
-            to text you.
-        </p>
+        I know I can't magically remove every insecurity you have.
+        And I can't promise that you'll wake up tomorrow
+        and suddenly love everything you see in the mirror.
 
-        <p>
-            But here's the problem...
-        </p>
+        <br><br>
 
-        <h2 class="pink">
-            You were right.
-        </h2>
+        But whenever your mind becomes cruel to you,
+        you can come back here.
 
-        <p>
-            It really doesn't take more than a few seconds.
-        </p>
+        <br><br>
 
-        <p>
-            And when you're the one who still remembers to
-            text me every morning, I understand why it hurt
-            that I didn't give you the same little effort back.
-        </p>
+        I'll remind you that you're so much more than your skin.
 
-        <button onclick="goTo(4)">
-            Continue 🥺
-        </button>
+        <br><br>
 
-    </div>
+        And until you can see yourself with a little more kindness...
 
-</div>
+        <br><br>
 
+        <strong>
+          you can borrow my eyes. ❤️
+        </strong>
 
-<!-- SCREEN 4 -->
+      </p>
 
-<div class="screen" id="screen4">
-
-    <div class="card">
-
-        <div class="sun">☀️</div>
-
-        <h1>I don't want you thinking...</h1>
-
-        <p>
-            ...that because I forgot to type
-            <b>"Good Morning"</b>,
-            I forgot about <b>you.</b>
-        </p>
-
-        <p>
-            Because I didn't.
-        </p>
-
-        <p>
-            But thinking about you quietly isn't enough
-            when something as simple as a little message
-            can make you feel remembered and loved.
-        </p>
-
-        <p>
-            Being busy explains it.
-        </p>
-
-        <h2 class="pink">
-            It doesn't excuse it.
-        </h2>
-
-        <button onclick="goTo(5)">
-            So what now? 🙄
-        </button>
+      <div class="signature">
+        — Rimon 🌸
+      </div>
 
     </div>
 
-</div>
+  </div>
 
 
-<!-- SCREEN 5 -->
+  <script>
 
-<div class="screen" id="screen5">
+    function changeMirror() {
 
-    <div class="card">
+      const mirror = document.getElementById("mirrorText");
 
-        <div style="font-size:65px;">🌷</div>
+      mirror.innerHTML =
+        "What I see:<br><br>" +
+        "those eyes.<br>" +
+        "that smile.<br>" +
+        "that beautiful face.<br><br>" +
+        "<strong>My Pakhi. ❤️</strong>";
 
-        <h1>So I owe you something...</h1>
+      document.getElementById("myEyes")
+        .classList.remove("hidden");
 
-        <p>Good morning for today. ☀️</p>
-        <p>Good morning for yesterday. ☀️</p>
-        <p>Good morning for the day before that. ☀️</p>
+      setTimeout(() => {
+        document.getElementById("myEyes")
+          .scrollIntoView({
+            behavior: "smooth"
+          });
+      }, 400);
+    }
 
-        <p>
-            And good morning for every morning
-            my stupid ass forgot to say it. 😭
-        </p>
 
-        <button onclick="goTo(6); startHearts();">
-            Claim compensation 🎁
-        </button>
+    function showSkinMessage() {
 
-    </div>
+      document.getElementById("skinMessage")
+        .classList.remove("hidden");
 
-</div>
+      setTimeout(() => {
+        document.getElementById("skinMessage")
+          .scrollIntoView({
+            behavior: "smooth"
+          });
+      }, 300);
+    }
 
-
-<!-- SCREEN 6 -->
-
-<div class="screen" id="screen6">
-
-    <div class="card">
-
-        <div style="font-size:70px;">☀️🌷</div>
-
-        <h1 class="pink">
-            GOOD MORNING, BEAUTIFUL.
-        </h1>
-
-        <p>
-            I hope your mornings always begin knowing
-            that somewhere in this world there's one idiot
-            who loves you, thinks about you,
-            misses you and apparently needs disciplinary
-            action to remember his morning duties. 😭❤️
-        </p>
-
-        <p>
-            I'm genuinely sorry for making something
-            so small feel like you weren't being considered.
-        </p>
-
-        <p>
-            You deserve the same little efforts
-            that you always give me.
-        </p>
-
-        <h2>So...</h2>
-
-        <p>
-            Will you forgive your convicted boyfriend? 🥺
-        </p>
-
-        <div class="button-zone">
-
-            <button id="forgiveBtn" onclick="forgiven()">
-                I forgive you ❤️
-            </button>
-
-            <button id="madBtn"
-                    onmouseover="runAway()"
-                    ontouchstart="runAway()">
-                Still mad 😒
-            </button>
-
-        </div>
-
-        <p class="small" id="madText"></p>
-
-    </div>
-
-</div>
-
-
-<!-- FINAL -->
-
-<div class="screen" id="screen7">
-
-    <div class="card">
-
-        <div class="big-heart">❤️</div>
-
-        <h1>
-            YAYYYYY 😭
-        </h1>
-
-        <h2 class="pink">
-            Boyfriend privileges restored.
-        </h2>
-
-        <p>
-            Thank you for forgiving this idiot.
-        </p>
-
-        <p>
-            Your regularly scheduled
-            <b>Good Morning service</b>
-            will resume immediately. ☀️
-        </p>
-
-        <p>
-            Terms & Conditions:
-            Morning texts may contain excessive affection,
-            random compliments and unnecessary amounts of
-            "I miss you." ❤️
-        </p>
-
-        <p class="signature">
-            Yours,<br>
-            the idiot who loves you ❤️
-        </p>
-
-    </div>
-
-</div>
-
-
-<script>
-
-function goTo(number) {
-
-    document.querySelectorAll(".screen")
-        .forEach(screen => screen.classList.remove("active"));
-
-    document.getElementById("screen" + number)
-        .classList.add("active");
-}
-
-
-function openEnvelope() {
-
-    const envelope =
-        document.getElementById("envelope");
-
-    envelope.classList.add("open");
-
-    setTimeout(() => {
-        goTo(2);
-    }, 1600);
-}
-
-
-/* STILL MAD BUTTON */
-
-let escapeCount = 0;
-
-function runAway() {
-
-    const btn =
-        document.getElementById("madBtn");
-
-    const zone =
-        document.querySelector(".button-zone");
-
-    const maxX =
-        zone.clientWidth - btn.offsetWidth;
-
-    const maxY =
-        zone.clientHeight - btn.offsetHeight;
-
-    const x =
-        Math.random() * maxX;
-
-    const y =
-        Math.random() * maxY;
-
-    btn.style.left = x + "px";
-    btn.style.right = "auto";
-    btn.style.top = y + "px";
-
-    escapeCount++;
 
     const messages = [
-        "Hey 😭",
-        "Come onnn 🥺",
-        "That button seems broken 👀",
-        "Neha please 😭",
-        "Wrong button madam.",
-        "Nice try 😂",
-        "Only one valid option remains ❤️"
+
+      "Still pretty. 🌸",
+
+      "Still my Pakhi. ❤️",
+
+      "Yes, I'm still obsessed with those eyes.",
+
+      "Acne detected. Beauty unaffected. ✅",
+
+      "Your face card has NOT been declined 😭❤️",
+
+      "You don't need perfect skin to be beautiful to me.",
+
+      "Stop fighting with my girlfriend, brain 😤",
+
+      "Yes, I'd still stare at you.",
+
+      "I didn't fall in love with clear skin. I fell for YOU.",
+
+      "Bad skin day ≠ bad face.",
+
+      "You are allowed to have imperfect skin and still feel beautiful.",
+
+      "The girl I'm crazy about is still right there. ❤️",
+
+      "Your acne is temporary. My attraction to you is extremely stubborn 😭",
+
+      "You look at your flaws. I look at you.",
+
+      "Be nice to my favourite girl today. That's an order 😤❤️"
     ];
 
-    document.getElementById("madText").innerText =
+
+    function giveReassurance() {
+
+      const random =
         messages[
-            Math.min(
-                escapeCount - 1,
-                messages.length - 1
-            )
+          Math.floor(
+            Math.random() * messages.length
+          )
         ];
-}
+
+      document.getElementById("reassurance")
+        .innerText = random;
+    }
 
 
-/* FORGIVEN */
+    function emergencyMode() {
 
-function forgiven() {
+      document.getElementById("emergencyText")
+        .innerHTML =
+        "OFFICIAL REMINDER:<br>NEHA IS BEAUTIFUL TODAY TOO. ❤️";
 
-    goTo(7);
-
-    startHearts();
-
-    setTimeout(startHearts, 1000);
-
-    setTimeout(startHearts, 2000);
-}
-
-
-/* HEART EFFECT */
-
-function startHearts() {
-
-    const emojis =
-        ["❤️", "💕", "💗", "🌷", "☀️", "💖", "🌸"];
-
-    for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 35; i++) {
 
         setTimeout(() => {
 
-            const item =
-                document.createElement("div");
+          const heart =
+            document.createElement("div");
 
-            item.className = "floating";
+          heart.classList.add("heart");
 
-            item.innerHTML =
-                emojis[
-                    Math.floor(
-                        Math.random() *
-                        emojis.length
-                    )
-                ];
+          heart.innerHTML =
+            Math.random() > 0.5 ? "❤️" : "🌸";
 
-            item.style.left =
-                Math.random() * 100 + "vw";
+          heart.style.left =
+            Math.random() * 100 + "vw";
 
-            item.style.fontSize =
-                (18 + Math.random() * 25) + "px";
+          heart.style.top =
+            70 + Math.random() * 25 + "vh";
 
-            item.style.animationDuration =
-                (3 + Math.random() * 4) + "s";
+          document.body.appendChild(heart);
 
-            document.body.appendChild(item);
+          setTimeout(() => {
+            heart.remove();
+          }, 2500);
 
-            setTimeout(() => {
-                item.remove();
-            }, 7500);
-
-        }, i * 100);
-
+        }, i * 70);
+      }
     }
-}
 
-</script>
+
+    // Falling flowers
+    for (let i = 0; i < 15; i++) {
+
+      const flower =
+        document.createElement("div");
+
+      flower.classList.add("flower");
+
+      flower.innerHTML = "🌸";
+
+      flower.style.left =
+        Math.random() * 100 + "vw";
+
+      flower.style.animationDuration =
+        7 + Math.random() * 8 + "s";
+
+      flower.style.animationDelay =
+        Math.random() * 8 + "s";
+
+      flower.style.fontSize =
+        14 + Math.random() * 18 + "px";
+
+      document.body.appendChild(flower);
+    }
+
+  </script>
 
 </body>
 </html>
